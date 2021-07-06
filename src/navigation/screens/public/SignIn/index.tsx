@@ -4,9 +4,8 @@ import { SafeAreaView, View, TouchableOpacity } from 'react-native';
 import { useAtom } from 'jotai';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { isValid } from 'rwanda-phone-utils';
 import { useNavigation } from '@react-navigation/native';
-import ImageLoad from 'react-native-image-placeholder';
+// import ImageLoad from 'react-native-image-placeholder';
 import Button from '@app/components/Button';
 import Input from '@app/components/Input';
 
@@ -20,9 +19,9 @@ const SignIn: React.FC<{}> = () => {
   const { navigate } = useNavigation();
 
   const loginSchema = Yup.object().shape({
-    phone_number: Yup.string()
-      .required('Phone number is required')
-      .test('', 'Invalid Phone Number', (value) => isValid(value)),
+    email: Yup.string()
+      .email('Should be a valid email')
+      .required('Email is required'),
     password: Yup.string()
       .required('Password is required')
       .length(6, 'Should be 6 digits'),
@@ -31,20 +30,19 @@ const SignIn: React.FC<{}> = () => {
   return (
     <SafeAreaView>
       <View style={styles.wrapper}>
-        <ImageLoad
+        {/* <ImageLoad
           source={{
-            uri:
-              'https://media.istockphoto.com/vectors/people-inside-the-car-wearing-protective-masks-travel-restrictions-on-vector-id1223282002?s=612x612',
+            uri: 'https://media.istockphoto.com/vectors/people-inside-the-car-wearing-protective-masks-travel-restrictions-on-vector-id1223282002?s=612x612',
           }}
           style={styles.image}
-        />
+        /> */}
         <Typography.Title style={styles.title} level={3}>
           Sign In
         </Typography.Title>
         <View style={styles.form}>
           <Formik
             validationSchema={loginSchema}
-            initialValues={{ phone_number: '', password: '' }}
+            initialValues={{ email: '', password: '' }}
             validateOnBlur={false}
             validateOnMount={false}
             validateOnChange={false}
@@ -56,12 +54,12 @@ const SignIn: React.FC<{}> = () => {
             }}>
             {({ values, errors, handleChange, handleSubmit }) => (
               <>
-                <Input.PhoneNumber
-                  placeholder="Phone Number"
+                <Input.Email
+                  placeholder="Email Address"
                   style={styles.input}
-                  value={values.phone_number}
-                  onChange={handleChange('phone_number')}
-                  error={errors.phone_number || undefined}
+                  value={values.email}
+                  onChange={handleChange('email')}
+                  error={errors.email || undefined}
                 />
                 <Input.Password
                   placeholder="Password"

@@ -9,7 +9,7 @@ const Amount: React.FC<Props> = (props) => {
   return (
     <Number
       {...props}
-      prefix={<Text style={styles.numberPrefix}>KSH</Text>}
+      suffix={<Text style={styles.numberPrefix}>Rwf</Text>}
     />
   );
 };
