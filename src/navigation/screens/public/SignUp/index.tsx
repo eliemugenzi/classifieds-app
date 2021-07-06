@@ -13,6 +13,7 @@ import * as Yup from 'yup';
 import { isValid } from 'rwanda-phone-utils';
 import Input from '@app/components/Input';
 import Button from '@app/components/Button';
+import Row from '@app/components/Row';
 
 import signUpAtom from '@app/atoms/signUpAtom';
 
@@ -35,6 +36,13 @@ const SignUp: React.FC<{}> = () => {
     confirm_password: Yup.string()
       .required('Confirm Password is required')
       .oneOf([Yup.ref('password'), ''], 'Passwords should match'),
+    first_name: Yup.string()
+      .required('First Name is required')
+      .min(3, 'Should be 3 characters minimum'),
+    last_name: Yup.string()
+      .required('Last Name is required')
+      .min(3, 'Should be 3 characters minimum'),
+    role: Yup.string(),
   });
 
   return (
@@ -50,22 +58,45 @@ const SignUp: React.FC<{}> = () => {
             email: '',
             password: '',
             confirm_password: '',
-            gender: 'M',
             phone_number: '',
+            first_name: '',
+            last_name: '',
+            role: 'seller',
           }}
           validationSchema={SignUpSchema}
           validateOnBlur={false}
           validateOnChange={false}
           validateOnMount={false}
           onSubmit={(values: any) => {
+            console.log('VAL', values);
             register({
-              data: values,
+              data: {
+                ...values,
+                confirm_password: undefined,
+              },
               navigate,
             });
           }}>
           {({ values, errors, handleChange, handleSubmit }) => (
             <>
               <View style={styles.form}>
+                <Row style={styles.input}>
+                  <Input
+                    placeholder="First Name"
+                    value={values.first_name}
+                    error={errors?.first_name || undefined}
+                    onChange={handleChange('first_name')}
+                    label="First Name"
+                  />
+                  <Input
+                    placeholder="Last Name"
+                    value={values.last_name}
+                    error={errors?.last_name || undefined}
+                    onChange={handleChange('last_name')}
+                    label="Last Name"
+                  />
+                </Row>
+
                 <Input.Email
                   placeholder="Email Address"
                   style={styles.input}
@@ -85,37 +116,37 @@ const SignUp: React.FC<{}> = () => {
                 <Input.Select
                   options={[
                     {
-                      label: 'Male',
-                      value: 'M',
+                      label: 'Seller',
+                      value: 'seller',
                     },
                     {
-                      label: 'Female',
-                      value: 'F',
+                      label: 'Customer',
+                      value: 'customer',
                     },
                   ]}
                   style={styles.input}
-                  label="Gender"
-                  placeholder="Gender"
-                  value={values.gender}
-                  onChange={handleChange('gender')}
-                  error={errors?.gender}
+                  value={values.role}
+                  error={errors?.role || undefined}
+                  placeholder="Join as"
+                  label="Join as"
                 />
-                <Input.Password
-                  placeholder="Password"
-                  style={styles.input}
-                  label="Password"
-                  value={values?.password}
-                  onChange={handleChange('password')}
-                  error={errors?.password}
-                />
-                <Input.Password
-                  placeholder="Confirm Password"
-                  style={styles.input}
-                  label="Confirm Password"
-                  value={values.confirm_password}
-                  onChange={handleChange('confirm_password')}
-                  error={errors?.confirm_password}
-                />
+                <Row style={styles.input}>
+                  <Input.Password
+                    placeholder="Password"
+                    label="Password"
+                    value={values?.password}
+                    onChange={handleChange('password')}
+                    error={errors?.password}
+                  />
+                  <Input.Password
+                    placeholder="Confirm"
+                    label="Confirm Password"
+                    value={values.confirm_password}
+                    onChange={handleChange('confirm_password')}
+                    error={errors?.confirm_password}
+                  />
+                </Row>
+
                 <Button
                   type="primary"
                   size="small"

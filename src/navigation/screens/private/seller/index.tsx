@@ -1,11 +1,17 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+import Home from './Home';
+import ProductDetails from '../customer/Home/ProductDetails';
+
+const Stack = createStackNavigator();
 
 const Seller: React.FC<{}> = () => {
   return (
-    <View>
-      <Text>Seller Page</Text>
-    </View>
+    <Stack.Navigator headerMode="none">
+      <Stack.Screen name="MyProducts" component={Home} />
+      <Stack.Screen name="Product" component={ProductDetails} />
+    </Stack.Navigator>
   );
 };
 
