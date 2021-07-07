@@ -1,4 +1,4 @@
-### #Project Name
+#### Project Name
 
 > ClassiFieds
 
@@ -8,32 +8,29 @@
 - Clone the repo, cd into it and follow the steps below
 
 ```bash
- - npm install
+  npm install
 ```
 
 #### Link the dependencies to the native modules
 
 ```bash
-
-- react-native link
+react-native link
 ```
 
 #### Pod installation - iOS
 
 ```bash
- - cd ios && pod install
+ cd ios && pod install
 ```
 
 #### Run the project on Android
 
 ```bash
-- npm run android
+npm run android
 ```
 
 #### Run the project on iOS
 
 ```bash
-
-- npm run ios
-
+npm run ios
 ```
