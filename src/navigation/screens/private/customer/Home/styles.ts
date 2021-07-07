@@ -7,6 +7,12 @@ export default StyleSheet.create({
     marginHorizontal: dimensions.deviceWidth * 0.1,
     marginVertical: dimensions.deviceHeight * 0.05,
   },
+  mv: {
+    marginVertical: 10,
+  },
+  title: {
+    fontSize: 16,
+  },
 });
 
 export const detailStyles = StyleSheet.create({
