@@ -47,6 +47,7 @@ import MapPin from './xml/map-pin';
 import Male from './xml/male';
 import Female from './xml/female';
 import Record from './xml/record';
+import Chat from './xml/chat';
 
 const icons = {
   ArrowLeft,
@@ -98,6 +99,7 @@ const icons = {
   Male,
   Female,
   Record,
+  Chat,
 };
 
 export type IconsNames = keyof typeof icons;
