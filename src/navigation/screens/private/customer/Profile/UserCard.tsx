@@ -1,6 +1,6 @@
 import React from 'react';
 import { View } from 'react-native';
-import { format } from 'rwanda-phone-utils';
+import phone from '@exuus/rwanda-phone-utils';
 import { useAtom } from 'jotai';
 import Card from '@app/components/Card';
 import Typography from '@app/components/Typography';
@@ -30,7 +30,7 @@ const UserCard: React.FC<Props> = (props) => {
                 }`}
               </Typography.Text>
               <Typography.Text style={userCardStyles.userPhone}>
-                {format(data?.phone_number)}
+                {phone(data?.phone_number).format('space')}
               </Typography.Text>
             </View>
           </View>

@@ -5,7 +5,7 @@ import Image from 'react-native-image-placeholder';
 import moment from 'moment';
 import numeral from 'numeral';
 import { useAtom } from 'jotai';
-import { format } from 'rwanda-phone-utils';
+import phone from '@exuus/rwanda-phone-utils';
 import Typography from '@app/components/Typography';
 import TitleBar from '@app/components/TitleBar';
 import Card from '@app/components/Card';
@@ -111,7 +111,9 @@ const ProductDetails: React.FC<{}> = () => {
                       color={COLORS.primary}
                     />
                     <Typography.Text style={styles.rowText}>
-                      {format(product?.seller?.phone_number)}
+                      {phone(product?.seller?.phone_number).format(
+                        'space',
+                      )}
                     </Typography.Text>
                   </View>
                 </View>

@@ -10,7 +10,7 @@ import {
 import { useNavigation } from '@react-navigation/native';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { isValid } from 'rwanda-phone-utils';
+import phone from '@exuus/rwanda-phone-utils';
 import Input from '@app/components/Input';
 import Button from '@app/components/Button';
 import Row from '@app/components/Row';
@@ -29,7 +29,11 @@ const SignUp: React.FC<{}> = () => {
       .email('Email should be valid'),
     phone_number: Yup.string()
       .required('Phone Number is required')
-      .test('', 'Invalid Phone Number', (value) => isValid(value)),
+      .test(
+        '',
+        'Invalid Phone Number',
+        (value) => phone(value as string).isValid,
+      ),
     password: Yup.string()
       .required('Password is required')
       .length(6, 'Should be 6 digits '),
@@ -68,7 +72,6 @@ const SignUp: React.FC<{}> = () => {
           validateOnChange={false}
           validateOnMount={false}
           onSubmit={(values: any) => {
-            console.log('VAL', values);
             register({
               data: {
                 ...values,
