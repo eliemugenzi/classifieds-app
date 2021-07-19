@@ -30,7 +30,8 @@ const UserCard: React.FC<Props> = (props) => {
                 }`}
               </Typography.Text>
               <Typography.Text style={userCardStyles.userPhone}>
-                {phone(data?.phone_number).format('space')}
+                {data?.phone_number &&
+                  phone(data?.phone_number).format('space')}
               </Typography.Text>
             </View>
           </View>
