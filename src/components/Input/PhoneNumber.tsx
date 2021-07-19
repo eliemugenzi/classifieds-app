@@ -4,7 +4,7 @@
  */
 
 import React from 'react';
-import { short, isValid, normalize } from 'rwanda-phone-utils';
+import phone from '@exuus/rwanda-phone-utils';
 
 import Base, { Props } from './Base';
 import styles from './Base/styles';
@@ -19,13 +19,17 @@ const PhoneNumber: React.FC<Props> = (props) => {
       hasError={
         typeof props.value === 'string' &&
         props.value.length > 0 &&
-        !isValid(props.value)
+        !phone(props?.value).isValid
       }
-      value={isValid(props.value) ? short(props.value) : props.value}
+      value={
+        phone(props.value as string).isValid
+          ? (phone(props.value as string).short as string)
+          : props.value
+      }
       onChange={(value) => {
         if (props.onChange)
-          isValid(value)
-            ? props.onChange(normalize(value))
+          phone(value).isValid
+            ? props.onChange(phone(value).unformatted as string)
             : props.onChange(value);
       }}
       prefix={

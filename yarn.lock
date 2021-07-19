@@ -744,6 +744,11 @@
   dependencies:
     "@types/hammerjs" "^2.0.36"
 
+"@exuus/rwanda-phone-utils@^1.0.6":
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/@exuus/rwanda-phone-utils/-/rwanda-phone-utils-1.0.6.tgz#9fc143dea72b927db3662524eeec8e5022b16258"
+  integrity sha512-BzODxT8KJ260KA3Bdun1nlB+HME2/CHUdx0HmCS6Y2+RrRd0MxNDdS9Uz8MIQqsNnrRsOF6gLZmDHGx0wwJktQ==
+
 "@hapi/address@2.x.x":
   version "2.1.4"
   resolved "https://registry.yarnpkg.com/@hapi/address/-/address-2.1.4.tgz#5d67ed43f3fd41a69d4b9ff7b56e7c0d1d0a81e5"
@@ -6994,11 +6999,6 @@ run-async@^2.2.0:
   version "2.4.1"
   resolved "https://registry.yarnpkg.com/run-async/-/run-async-2.4.1.tgz#8440eccf99ea3e70bd409d49aab88e10c189a455"
   integrity sha512-tvVnVv01b8c1RrA6Ep7JkStj85Guv/YrMcwqYQnwjsAS2cTmmPGBBjAjpCW7RrSodNSoE2/qg9O4bceNvUuDgQ==
-
-rwanda-phone-utils@^1.0.5:
-  version "1.0.5"
-  resolved "https://registry.yarnpkg.com/rwanda-phone-utils/-/rwanda-phone-utils-1.0.5.tgz#c8ee40ba1176e4eec4d708a89ea3e7f42f5b2237"
-  integrity sha512-OwUMsVSaPPOub+AnSujibIJyy//0qy5ldgj+IR9mMtYeWBVKTd3hhx59axB1FpP7RZ0JD03SfMtU47y6AAkIWg==
 
 rwanda@2.1.0:
   version "2.1.0"
